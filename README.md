@@ -3,9 +3,9 @@ Simple youtube downloder with minimal options
 
 1) Install requirements 
 
-2) starting main.py
+2) Starting main.py
 
-3) paste Url and Enter it will auto detect video or playlist and it will auto download videos in 720p 
+3) Paste Url and Enter it will auto detect video or playlist and it will auto download videos in 720p 
 
 ## Enter Url
 

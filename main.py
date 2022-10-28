@@ -4,18 +4,26 @@ from pytube import Playlist
 import re
 
 def linkDownloder(txt):
-    YouTube(txt,on_progress_callback=on_progress).streams.get_highest_resolution().download()
-    print("(:")
+    yt = YouTube(txt,on_progress_callback=on_progress)
+    print(yt.title)
+    yt.streams.get_highest_resolution().download()
+    print('\n')
 
+    
 def playlistfind(txt):
     playlist = Playlist(txt)
     print('Number of videos in playlist: %s' % len(playlist.video_urls))
     for video_url in playlist.video_urls:
         linkDownloder(video_url)
 
-txt = input('enter url:')
-x=re.findall("=PL", txt)
-if "=PL"== x[0]:
-    playlistfind(txt)
-else:
-    linkDownloder(txt)
+try:
+    txt = input('Enter url :')
+    x=re.findall("=PL", txt)
+    try:
+        if "=PL"== x[0]:
+            playlistfind(txt)
+    except:
+        linkDownloder(txt)
+except:
+    print("Invalid Url")
+    input()

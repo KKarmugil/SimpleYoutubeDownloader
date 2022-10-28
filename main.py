@@ -1,21 +1,21 @@
 from pytube import YouTube
+from pytube.cli import on_progress
+from pytube import Playlist
+import re
 
-link = input("Enter link: ")
-yt = YouTube(link)
-print(yt.title)
-print(yt.views)
-print(yt.thumbnail_url)
-yt  = yt.streams.get_highest_resolution()
-yt.download()
+def linkDownloder(txt):
+    YouTube(txt,on_progress_callback=on_progress).streams.get_highest_resolution().download()
+    print("(:")
 
-"""a= Playlist("https://www.youtube.com/watch?v=hT_nvWreIhg&list=PLFYZdRdQ3wPvzjuN2TvG4WDveSpHZjelu")
-b=len(a)
-for i in range(b):
-    print(a[i])
-    link = a[i]
-    yt = YouTube(link)
-    print(yt.title)
-    print(yt.views)
-    print(yt.thumbnail_url)
-    yt  = yt.streams.get_by_resolution('720p')
-    yt.download("E:\python-program")"""
+def playlistfind(txt):
+    playlist = Playlist(txt)
+    print('Number of videos in playlist: %s' % len(playlist.video_urls))
+    for video_url in playlist.video_urls:
+        linkDownloder(video_url)
+
+txt = input('enter url:')
+x=re.findall("=PL", txt)
+if "=PL"== x[0]:
+    playlistfind(txt)
+else:
+    linkDownloder(txt)

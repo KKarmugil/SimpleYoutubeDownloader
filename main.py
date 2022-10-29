@@ -5,7 +5,10 @@ import re
 
 def linkDownloder(txt):
     yt = YouTube(txt,on_progress_callback=on_progress)
-    print(yt.title)
+    print(f"\n------------------------------")
+    print(f"video title : {yt.title} \n")
+    print(f"Views : {yt.views} \n")
+    print(f"video author : {yt.author} \n------------------------------")
     yt.streams.get_highest_resolution().download()
     print('\n')
 

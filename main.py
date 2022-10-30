@@ -20,7 +20,7 @@ def playlistfind(txt):
         linkDownloder(video_url)
 
 try:
-    txt = input('Enter url :')
+    txt = input('Enter url : ')
     x=re.findall("=PL", txt)
     try:
         if "=PL"== x[0]:
